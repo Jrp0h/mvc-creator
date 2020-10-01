@@ -13,18 +13,21 @@ which it gets from either API.ts or WEB.ts in the Routes directory
 Inside the API.ts/WEB.ts it imports all routes from Routes/api or Routes/web
 depending on if it's a web or api controller.
 
-in the routes file it will have
-*This is for API Routes*
+in the routes file it will have:
 
 ```javascript
-
 routes.get("/", PostsController.Index);
-routes.get("/:id", PostsController.Show);
-routes.store("/", PostsController.Store);
+routes.post("/", PostsController.Store);
 
+routes.get("/:id", PostsController.Show);
+routes.put("/:id", PostsController.Update);
+routes.patch("/:id", PostsController.Update);
+routes.delete("/:id", PostsController.Destroy);
 ```
 
-### Typescript
+* This is for API Routes *
+
+### Folder Structure - TypeScript
 
 ```bash
 .
@@ -47,8 +50,35 @@ routes.store("/", PostsController.Store);
 
 ## Usage
 
-### Create Controller
+### Projects
+
+Creating
+
+```bash
+mvc-creator project new <name>
+```
+
+flags:
+
+* --js : --javascript, Creates the project using JavaScript (NOT IMPLEMENTED YET)
+
+### Controllers
+
+Creating
 
 ```bash
 mvc-creator controller new <name>
+```
+
+flags:
+
+* -e : --everything, Creates a Model, Controller and Routes
+* -a : --api, Only creates API methods (Excluding: Edit and Create)
+
+### Models
+
+Creating
+
+```bash
+mvc-creator model new <name>
 ```
