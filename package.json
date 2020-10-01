@@ -1,0 +1,30 @@
+{
+  "name": "mvc-creator",
+  "version": "0.0.1",
+  "description": "Create nodejs MVC backends fast cli",
+  "main": "main.js",
+  "dependencies": {
+    "commander": "^6.1.0",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jrp0h/mvc-creator.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "Marcus Nilsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jrp0h/mvc-creator/issues"
+  },
+  "homepage": "https://github.com/Jrp0h/mvc-creator#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0"
+  }
+}
