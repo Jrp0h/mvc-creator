@@ -25,8 +25,6 @@ routes.patch("/:id", PostsController.Update);
 routes.delete("/:id", PostsController.Destroy);
 ```
 
-* This is for API Routes *
-
 ### Folder Structure - TypeScript
 
 ```bash
@@ -55,10 +53,10 @@ routes.delete("/:id", PostsController.Destroy);
 Creating
 
 ```bash
-mvc-creator project new <name>
+mvc-creator create project <name>
 ```
 
-flags:
+Flags:
 
 * --js : --javascript, Creates the project using JavaScript (NOT IMPLEMENTED YET)
 
@@ -67,10 +65,10 @@ flags:
 Creating
 
 ```bash
-mvc-creator controller new <name>
+mvc-creator create controller <name>
 ```
 
-flags:
+Flags:
 
 * -e : --everything, Creates a Model, Controller and Routes
 * -a : --api, Only creates API methods (Excluding: Edit and Create)
@@ -80,5 +78,40 @@ flags:
 Creating
 
 ```bash
-mvc-creator model new <name>
+mvc-creator create model <name>
 ```
+
+### Future Commands
+
+Generate Dotenv
+
+```bash
+mvc-creator dotenv generate
+```
+
+Generate App key
+
+```bash
+mvc-creator dotenv key generate
+```
+
+View App Key
+
+```bash
+mvc-creator dotenv key view
+```
+
+## TODO
+
+### Priority
+
+* Generate project
+* Split things into files to remove clutter and copy-code
+* Add Dotenv
+  * Generate App key for encryption
+
+### Later
+
+* Generate js project
+* Middleware
+* Allow saving into Directories
