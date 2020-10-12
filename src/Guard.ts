@@ -3,7 +3,7 @@ import * as path from "path";
 import Helper from "./Helper";
 import Templates from "./Templates";
 
-export class Middleware {
+export class Guard {
 
    static capitalizedName: string = "";
 
@@ -13,11 +13,11 @@ export class Middleware {
 
       this.capitalizedName = name.substr(0, 1).toUpperCase() + name.slice(1);
 
-      Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Middlewares"));
+      Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Guards"));
 
       // Write file
-      Helper.writeFileIfDoesntExist(path.join(cwd, "src", "Middlewares", this.capitalizedName + "Middleware.ts"), Templates.middleware);
+      Helper.writeFileIfDoesntExist(path.join(cwd, "src", "Guards", this.capitalizedName + "Guard.ts"), Templates.middleware);
 
-      console.log("Middleware created successfully!");
+      console.log("Guard created successfully!");
    }
 }

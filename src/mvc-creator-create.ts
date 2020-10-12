@@ -5,6 +5,7 @@ import {Controller} from "./Controller";
 import {Model} from "./Model";
 import {Middleware} from "./Middleware";
 import {Dotenv} from "./Dotenv";
+import {Guard} from "./Guard";
 
 commander.program
    .command("project <name>")
@@ -31,6 +32,12 @@ commander.program
    .alias("mw")
    .description("Create new Middleware")
    .action(function (name, options) {Middleware.Create(name, options)});
+
+commander.program
+   .command("guard <name>")
+   .alias("g")
+   .description("Create new Guard")
+   .action(function (name, options) {Guard.Create(name, options)});
 
 commander.program
    .command("dotenv")
