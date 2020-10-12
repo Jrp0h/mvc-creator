@@ -6,6 +6,7 @@ import {Model} from "./Model";
 import {Middleware} from "./Middleware";
 import {Dotenv} from "./Dotenv";
 import {Guard} from "./Guard";
+import Util from "./Util";
 
 commander.program
    .command("project <name>")
@@ -41,7 +42,14 @@ commander.program
 
 commander.program
    .command("env")
+   .alias("e")
    .description("Create an empty .env file")
    .action(() => Dotenv.Create());
+
+commander.program
+   .command("util <name>")
+   .alias("u")
+   .description("Create new Util class")
+   .action(Util.Create);
 
 commander.program.parse(process.argv);

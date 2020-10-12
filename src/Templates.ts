@@ -230,4 +230,9 @@ export default async function(req: Request, res: Response, next: NextFunction) {
    next();
 }`;
 
+   static util_class: string = `export default class {{util_name}} {
+
+}
+`;
+
 }

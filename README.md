@@ -85,7 +85,17 @@ Creating
 mvc-creator create middleware <name>
 ```
 
-Create .env
+### Utility
+
+Creating
+
+```bash
+mvc-creator create util <name>
+```
+
+### .Env
+
+Creating
 
 ```bash
 mvc-creator create env
@@ -129,12 +139,6 @@ mvc-creator env show
 
 ## TODO
 
-### Priority
-
 * Make so any dotenv operation changes the .env.example file
 * Split things into files to remove clutter and copy-code
 
-### Later
-
-* Generate js project
-* Allow saving into Directories
