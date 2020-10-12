@@ -2,6 +2,8 @@ import pluralize from "pluralize";
 import Templates from "./Templates";
 import {Model} from "./Model";
 
+import Helper from "./Helper";
+
 import * as fs from "fs";
 import * as path from "path";
 
@@ -37,27 +39,6 @@ export class Controller {
          .split("{{generate_everything_controller_model_import}}").join(generate_everything_controller_model_import);
    }
 
-   static createIfDoesntExist(folder: string) {
-      if (!fs.existsSync(folder)) {
-         fs.mkdirSync(folder)
-         let last = folder.split("/");
-         console.log("Created " + last[last.length - 1] + " directory");
-         return false;
-      }
-
-      return true;
-   }
-
-   static writeFileIfDoesntExist(file: string, data: string) {
-
-      if (!fs.existsSync(file)) {
-         fs.writeFileSync(file, data);
-         let last = file.split("/");
-         console.log(`Created ${last[last.length - 1]} file`);
-         return false;
-      }
-      return true;
-   }
 
    static async Create(name: string, options: any) {
 
@@ -77,11 +58,11 @@ export class Controller {
 
       // Check if src folder exists,
       // if it doesn't then create it
-      this.createIfDoesntExist(path.join(cwd, "src"));
+      Helper.createDirectoryIfDoesntExist(path.join(cwd, "src"));
 
       // Check if src/Controllers folder exists,
       // if it doesn't then create it
-      this.createIfDoesntExist(path.join(cwd, "src", "Controllers"));
+      Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Controllers"));
 
       let controller = this.replaceAll(Templates.controller);
 
@@ -103,7 +84,7 @@ export class Controller {
          // Routes
          // Check if src/Routes folder exists,
          // if it doesn't then create it
-         this.createIfDoesntExist(path.join(cwd, "src", "Routes"));
+         Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Routes"));
 
          let routesThing = this.replaceAll(Templates.routesHeader)
             + "\n" +
@@ -113,7 +94,7 @@ export class Controller {
 
          // Check if src/Routes/{{type}} file exists,
          // if it doesn't then create it
-         if (this.writeFileIfDoesntExist(path.join(cwd, "src", "Routes", this.route_type.toUpperCase() + ".ts"), routesThing)) {
+         if (Helper.writeFileIfDoesntExist(path.join(cwd, "src", "Routes", this.route_type.toUpperCase() + ".ts"), routesThing)) {
 
             let content = fs.readFileSync(path.join(cwd, "src", "Routes", this.route_type.toLowerCase() + ".ts"), {encoding: 'utf-8'});
             let lines = content.split("\n");
@@ -135,7 +116,7 @@ export class Controller {
 
          // Check if src/Routes/{{type}} folder exists,
          // if it doesn't then create it
-         this.createIfDoesntExist(path.join(cwd, "src", "Routes", this.route_type));
+         Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Routes", this.route_type));
 
          let modelRoute = this.replaceAll(Templates.modelRoute);
 

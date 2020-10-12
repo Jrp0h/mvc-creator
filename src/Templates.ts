@@ -106,4 +106,116 @@ export default router;
    }
 }
 `
+
+   static tsconfig: string = `{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "lib": [
+      "es6",
+      "es2015",
+      "dom"
+    ],
+    "declaration": true,
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "strict": true,
+    "types": [
+      "node"
+    ],
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  }
+}
+`;
+
+   static routes_api_ts: string = `import express from "express";
+
+let router: express.Router = express.Router();
+
+export default router;
+`;
+
+   static utils_error_handeling_ts: string = `import Str from "./Str";
+
+export default class ErrorHandeling {
+
+   static Handle(error: any)
+   {
+      if(error.code === 11000) {
+         let errors: Array<CustomError> = new Array<CustomError>();
+
+         for (let key in error.keyValue) {
+            errors.push({key, value: error.keyValue[key], type: "duplicate_key"});
+         }
+
+         return {
+            status: "Error",
+            type: "Duplicate Key",
+            code: error.code
+            errors
+         };
+      }
+
+      return false;
+   }
+}
+
+export class CustomError {
+   key: string = "";
+   value: any;
+   type: string = "";
+}
+`;
+
+   static utils_str_ts: string = `export default class Str {
+
+   static Capitalize(text: string): string {
+      return text.substr(0, 1).toUpperCase() + text.slice(1);
+   }
+
+}
+
+`;
+
+   static main_ts: string = `import express, { Request, Response } from "express";
+import mongoose from "mongoose";
+
+import * as dotenv from "dotenv";
+dotenv.config();
+
+mongoose.connect(
+   <string>process.env.MONGODB_URI,
+   { useNewUrlParser: true, useUnifiedTopology: true },
+   (err: any) => {
+      if(err) {
+         process.exit(1);
+      }
+   }
+);
+
+const app: express.Application = express();
+
+app.use(express.json());
+app.use(
+   express.urlencoded({
+      extended: true
+   })
+);
+
+import API from "./Routes/API";
+
+app.use("/api", API);
+
+app.listen(process.env.PORT, () => console.log(\`Server running on port \$\{process.env.PORT\}\`));`;
+
+   static dotenv: string = `PORT=5000
+MONGODB_URI=mongodb://localhost:27017`;
+
+   static gitignore: string = `.env
+node_modules
+dist
+package-lock.json
+`;
+
 }
