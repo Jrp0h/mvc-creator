@@ -85,46 +85,46 @@ Creating
 mvc-creator create middleware <name>
 ```
 
-Create Dotenv
+Create .env
 
 ```bash
-mvc-creator create dotenv
+mvc-creator create env
 ```
 
 Generate App key
 
 ```bash
-mvc-creator dotenv key generate
+mvc-creator env key generate
 ```
 
 View App Key
 
 ```bash
-mvc-creator dotenv key view
+mvc-creator env key view
 ```
 
 View Value
 
 ```bash
-mvc-creator dotenv get <key>
+mvc-creator env get <key>
 ```
 
 Set Value
 
 ```bash
-mvc-creator dotenv set <key> <value>
+mvc-creator env set <key> <value>
 ```
 
 Remove Value
 
 ```bash
-mvc-creator dotenv remove <key>
+mvc-creator env remove <key>
 ```
 
 Show entire file
 
 ```bash
-mvc-creator dotenv show
+mvc-creator env show
 ```
 
 ## TODO

@@ -17,10 +17,6 @@ export class Dotenv {
       Helper.writeFileIfDoesntExist(path.join(cwd, ".env.example"), Templates.dotenv);
    }
 
-   static async GenerateKey() {
-      Dotenv.SetValue("APP_KEY", Dotenv.GenerateAppKey());
-   }
-
    static async ViewKey() {
       Dotenv.GetValue("APP_KEY");
    }
@@ -117,6 +113,10 @@ export class Dotenv {
       console.log(file);
    }
 
+   static async GenerateValue(key: string) {
+      Dotenv.SetValue(key, Dotenv.Generate());
+   }
+
    // set ext to ".example" to edit example file
    private static ReadFile(ext: string = "") {
       try {
@@ -139,7 +139,7 @@ export class Dotenv {
       }
    }
 
-   private static GenerateAppKey(length: number = 30) {
+   private static Generate(length: number = 30) {
       let result = '';
       let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789=?!_-.,$';
       let charactersLength = characters.length;

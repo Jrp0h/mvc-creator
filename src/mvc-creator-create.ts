@@ -40,7 +40,7 @@ commander.program
    .action(function (name, options) {Guard.Create(name, options)});
 
 commander.program
-   .command("dotenv")
+   .command("env")
    .description("Create an empty .env file")
    .action(() => Dotenv.Create());
 

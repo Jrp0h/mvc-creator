@@ -5,7 +5,7 @@ commander.program
    .command("key generate")
    .alias("kg")
    .description("Generate new App key")
-   .action(Dotenv.GenerateKey);
+   .action(() => Dotenv.GenerateValue("APP_KEY"));
 
 commander.program
    .command("key view")
@@ -35,5 +35,11 @@ commander.program
    .command("show")
    .description("Show entire .env file")
    .action(Dotenv.Show);
+
+commander.program
+   .command("generate <key>")
+   .alias("gen")
+   .description("Generate value for a given key")
+   .action(Dotenv.GenerateValue);
 
 commander.program.parse(process.argv);
