@@ -25,7 +25,7 @@ export class Controller {
       let generate_everything_controller_model_import: string = "";
 
       if (this.options.everything === true)
-         generate_everything_controller_model_import = `import ${this.model_name} from "../Models/${this.model_name}";`;
+         generate_everything_controller_model_import = `import ${this.model_name} from "@/Models/${this.model_name}";`;
 
 
       return text

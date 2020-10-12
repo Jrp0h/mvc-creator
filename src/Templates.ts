@@ -59,7 +59,7 @@ import express from 'express'
 let router: express.Router = express.Router();
 `;
 
-   static routesTemplate: string = `import {{route_name}} from './{{route_type}}/{{route_name}}';
+   static routesTemplate: string = `import {{route_name}} from '@/Routes/{{route_type}}/{{route_name}}';
 router.use("/{{route_path}}", {{route_name}});
 `;
 
@@ -144,9 +144,7 @@ let router: express.Router = express.Router();
 export default router;
 `;
 
-   static utils_error_handeling_ts: string = `import Str from "./Str";
-
-export default class ErrorHandeling {
+   static utils_error_handeling_ts: string = `export default class ErrorHandeling {
 
    static Handle(error: any)
    {
@@ -211,7 +209,7 @@ app.use(
    })
 );
 
-import API from "./Routes/API";
+import API from "@/Routes/API";
 
 app.use("/api", API);
 
