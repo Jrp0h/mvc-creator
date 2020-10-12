@@ -17,16 +17,19 @@ export default class {{controller_name}} {
 
    static async Show(req: Request, res: Response)
    {
+      const id = req.params.id;
 
    }
 
    static async Update(req: Request, res: Response)
    {
+      const id = req.params.id;
 
    }
 
    static async Destroy(req: Request, res: Response)
    {
+      const id = req.params.id;
 
    }
 }`;
@@ -53,7 +56,7 @@ export default mongoose.model<{{model_interface}}>("{{model_name}}", {{model_sch
    static routesHeader: string = `
 import express from 'express'
 
-let router = express.Router();
+let router: express.Router = express.Router();
 `;
 
    static routesTemplate: string = `import {{route_name}} from './{{route_type}}/{{route_name}}';
@@ -66,7 +69,7 @@ export default router;
 
    static modelRoute: string = `import express from "express";
 
-import {{controller_name}} from "../../Controllers/{{controller_name}}";
+import {{controller_name}} from "@/Controllers/{{controller_name}}";
 
 let router = express.Router();
 
@@ -74,9 +77,8 @@ router.get("/", {{controller_name}}.Index);
 router.post("/", {{controller_name}}.Store);
 
 router.get("/:id", {{controller_name}}.Show);
-router.get("/:id", {{controller_name}}.Update);
-router.get("/:id", {{controller_name}}.Update);
-router.get("/:id", {{controller_name}}.Destroy);
+router.patch("/:id", {{controller_name}}.Update);
+router.delete("/:id", {{controller_name}}.Destroy);
 
 export default router;
 `;
@@ -124,7 +126,13 @@ export default router;
       "node"
     ],
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+       "@/*": [
+          "src/*"
+       ]
+    }
   }
 }
 `;
@@ -152,7 +160,7 @@ export default class ErrorHandeling {
          return {
             status: "Error",
             type: "Duplicate Key",
-            code: error.code
+            code: error.code,
             errors
          };
       }
