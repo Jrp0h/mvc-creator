@@ -3,6 +3,8 @@ import commander from "commander";
 import {Project} from "./Project";
 import {Controller} from "./Controller";
 import {Model} from "./Model";
+import {Middleware} from "./Middleware";
+import {Dotenv} from "./Dotenv";
 
 commander.program
    .command("project <name>")
@@ -24,5 +26,15 @@ commander.program
    .description("Create new Model")
    .action(function (name, options) {Model.Create(name, options)});
 
+commander.program
+   .command("middleware <name>")
+   .alias("mw")
+   .description("Create new Middleware")
+   .action(function (name, options) {Middleware.Create(name, options)});
+
+commander.program
+   .command("dotenv")
+   .description("Create an empty .env file")
+   .action(() => Dotenv.Create());
 
 commander.program.parse(process.argv);

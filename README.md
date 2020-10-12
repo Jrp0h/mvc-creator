@@ -56,10 +56,6 @@ Creating
 mvc-creator create project <name>
 ```
 
-Flags:
-
-* --js : --javascript, Creates the project using JavaScript (NOT IMPLEMENTED YET)
-
 ### Controllers
 
 Creating
@@ -81,12 +77,18 @@ Creating
 mvc-creator create model <name>
 ```
 
-### Future Commands
+### Middleware
 
-Generate Dotenv
+Creating
 
 ```bash
-mvc-creator dotenv generate
+mvc-creator create middleware <name>
+```
+
+Create Dotenv
+
+```bash
+mvc-creator create dotenv
 ```
 
 Generate App key
@@ -101,17 +103,38 @@ View App Key
 mvc-creator dotenv key view
 ```
 
+View Value
+
+```bash
+mvc-creator dotenv get <key>
+```
+
+Set Value
+
+```bash
+mvc-creator dotenv set <key> <value>
+```
+
+Remove Value
+
+```bash
+mvc-creator dotenv remove <key>
+```
+
+Show entire file
+
+```bash
+mvc-creator dotenv show
+```
+
 ## TODO
 
 ### Priority
 
-* Generate project
+* Make so any dotenv operation changes the .env.example file
 * Split things into files to remove clutter and copy-code
-* Add Dotenv
-  * Generate App key for encryption
 
 ### Later
 
 * Generate js project
-* Middleware
 * Allow saving into Directories

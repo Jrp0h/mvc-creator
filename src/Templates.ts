@@ -224,4 +224,10 @@ dist
 package-lock.json
 `;
 
+   static middleware: string = `import express, {Request, Response, NextFunction} from 'express';
+
+export default async function(req: Request, res: Response, next: NextFunction) {
+   next();
+}`;
+
 }

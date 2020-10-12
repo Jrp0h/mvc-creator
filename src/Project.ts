@@ -3,6 +3,7 @@ import * as child_process from "child_process";
 
 import Helper from "./Helper";
 import Templates from "./Templates";
+import { Dotenv } from "./Dotenv";
 
 export class Project {
 
@@ -58,9 +59,8 @@ export class Project {
         //create main
         Helper.writeFileIfDoesntExist(path.join(cwd, "src", "main.ts"), this.replaceAll(Templates.main_ts));
 
-        // Write .env file
-        Helper.writeFileIfDoesntExist(path.join(cwd, ".env"), Templates.dotenv);
-        Helper.writeFileIfDoesntExist(path.join(cwd, ".env.example"), Templates.dotenv);
+        // Create dotenv file
+        Dotenv.Create(cwd);
 
         // Write .gitignore
         Helper.writeFileIfDoesntExist(path.join(cwd, ".gitignore"), Templates.gitignore);
