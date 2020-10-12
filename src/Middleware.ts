@@ -14,10 +14,10 @@ export class Middleware {
 
       this.capitalizedName = name.substr(0, 1).toUpperCase() + name.slice(1);
 
-      Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Middleware"));
+      Helper.createDirectoryIfDoesntExist(path.join(cwd, "src", "Middlewares"));
 
       // Write file
-      Helper.writeFileIfDoesntExist(path.join(cwd, "src", "Middlware", name + ".ts"), Templates.middleware);
+      Helper.writeFileIfDoesntExist(path.join(cwd, "src", "Middlewares", this.capitalizedName + "Middleware.ts"), Templates.middleware);
 
       console.log("Middleware created successfully!");
    }
