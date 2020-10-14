@@ -125,6 +125,12 @@ Set Value
 mvc-creator env set <key> <value>
 ```
 
+Generate random string for Value
+
+```bash
+mvc-creator env generate <key>
+```
+
 Remove Value
 
 ```bash
