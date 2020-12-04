@@ -235,4 +235,8 @@ export default async function(req: Request, res: Response, next: NextFunction) {
 }
 `;
 
+   static error_class: string = `export default class {{util_name}}Error {
+
+}
+`;
 }

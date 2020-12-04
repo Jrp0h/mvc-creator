@@ -7,6 +7,7 @@ import {Middleware} from "./Middleware";
 import {Dotenv} from "./Dotenv";
 import {Guard} from "./Guard";
 import Util from "./Util";
+import Error from "./Error";
 
 commander.program
    .command("project <name>")
@@ -42,7 +43,6 @@ commander.program
 
 commander.program
    .command("env")
-   .alias("e")
    .description("Create an empty .env file")
    .action(() => Dotenv.Create());
 
@@ -51,5 +51,11 @@ commander.program
    .alias("u")
    .description("Create new Util class")
    .action(Util.Create);
+
+commander.program
+   .command("error <name>")
+   .alias("e")
+   .description("Create new Error class")
+   .action(Error.Create);
 
 commander.program.parse(process.argv);

@@ -93,6 +93,14 @@ Creating
 mvc-creator create util <name>
 ```
 
+### Error
+
+Creating
+
+```bash
+mvc-creator create error <name>
+```
+
 ### .Env
 
 Creating
